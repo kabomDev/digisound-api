@@ -1,0 +1,22 @@
+<div class="container">
+    <h1>Félicitation !</h1>
+
+    <p>Bonjour {{user.fullName}} </p>
+
+    <p>Vous venez d'acquerir un ou des billet(s) pour l'énènement {{event.title}}</p>
+
+    <div class="container">
+        <h2>Voici le détail de votre commande</h2>
+        <p><strong>{{event.title}}:</strong> du {{event.startDate| date("d/m/Y")}} au {{event.endDate| date("d/m/Y")}}</p>
+        <p>Nombre de place: {{ticket.quantity}}</p>
+        <p>Montant total de la commande: {{ticket.amount}} €</p>
+    </div>
+    <hr>
+    <div class="text-center">
+        <h2>Voici votre QR code qui fera office de billet</h2>
+        <div class="text-center">
+            <img src="{{billet}} " alt="billet">
+        </div>
+    </div>
+</div>
+

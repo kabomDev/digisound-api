@@ -1,0 +1,25 @@
+.form-edit {
+    background-color: rgb(209, 209, 209);
+}
+
+#admin-interface a {
+    margin: 0;
+    padding: 0;
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #fff;
+    text-decoration: none;
+}
+
+.col-md-3 {
+    transition: 1s;
+}
+
+.col-md-3:hover {
+    box-shadow: 3px 7px 13px 0px rgba(0, 0, 0, 0.75);
+    transition: 1s;
+}
+
+#logo {
+    width: 150px;
+}

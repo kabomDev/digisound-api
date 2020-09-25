@@ -1,0 +1,30 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="{{path('admin')}}">
+    <img id="logo" src="/images/logo2.png" alt="DigiSound">
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  {% if is_granted('ROLE_ADMIN')  %}
+  <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
+    <ul class="navbar-nav">
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle pr-5" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Bonjour {{app.user.fullName}} 
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" href="{{path('events')}}">Liste des évènements</a>
+          <a class="dropdown-item" href="{{path('artists')}}">Liste des artistes</a>
+          <a class="dropdown-item" href="{{path('users')}}">Liste des utilisateurs</a>
+          <a class="dropdown-item" href="{{path('tickets')}}">Liste des tickets</a>
+          <hr>
+          <a class="dropdown-item" href="{{path('event_add')}}">Ajouter un évènement</a>
+          <a class="dropdown-item" href="{{path('artist_add')}}">Ajouter un artiste</a>
+          <hr>
+          <a class="dropdown-item text-danger" href="{{path('app_logout')}}">Deconnexion</a>
+        </div>
+      </li>
+    </ul>
+  </div>
+  {% endif %}
+</nav>

@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des utilisateurs{% endblock %}
+
+{% block body %}
+<main>
+        <div class="container mt-5">
+            <h2 style="fontSize:2em">Liste des utilisateurs</h2>
+            <table class="table table-bordered table-sm table-striped">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Nom complet</th>
+                    <th scope="col">email</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for user in users %}
+                   {% if user.email != 'admin@gmail.com' %}     
+                    <tr>
+                        <th scope="row">{{user.id}}</th>
+                        <td>{{user.fullName}}</td>
+                        <td>{{user.email}}</td>
+                        <td class="text-center">
+                            <a href="{{path('user_delete',{'id':user.id})}}" class="btn btn-danger"><i class="fa fa-trash"></i></a>
+                        </td>
+                    </tr>  
+                    {% endif %} 
+                {% endfor %}
+            </tbody>
+            </table>
+            <div class="pagination">
+            {{knp_pagination_render(users)}}
+         </div>
+        </div>
+    </main>
+{% endblock %}

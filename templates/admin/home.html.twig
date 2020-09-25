@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Digisound{% endblock %}
+
+{% block body %}
+    <main>
+        <div class="container mt-5">
+            <h2 style="fontSize:2em">Liste des billets vendus ce mois-ci</h2>
+            <table class="table table-bordered table-sm table-striped">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">evenement</th>
+                    <th scope="col">client</th>
+                    <th scope="col">quantité</th>
+                    <th scope="col">Montant</th>
+                    <th scope="col">Date d'achat</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for ticket in tickets %}    
+                <tr>
+                    <th scope="row">{{ticket.id}}</th>
+                    <td>{{ticket.eventName.title}}</td>
+                    <td>{{ticket.ticketClient.fullName}}</td>
+                    <td>{{ticket.quantity}} </td>
+                    <td>{{ticket.amount}}</td>
+                    <td>{{ticket.createdAt| date('d-m-yy')}}</td>
+                </tr>   
+                {% endfor %}
+            </tbody>
+            </table>
+            <div class="pagination">
+            {{knp_pagination_render(tickets)}}
+         </div>
+        </div>
+    </main>
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends "base.html.twig" %}
+{% block title %}Ajout d'un evenement{% endblock %}
+
+{% block body %}
+<main class="container">
+    <h1 class="text-center m-4">Ajouter un évènement</h1>
+
+    {{form_start(form)}}
+       {{form_row(form.title)}} 
+        <div class="pt-3">
+            {{form_row(form.description)}}   
+        </div>
+        <div class="pt-3">
+            {{form_row(form.city)}}   
+        </div>
+        <div class="pt-3">
+            {{form_row(form.capacity)}} 
+        </div>
+        <div class="pt-3">
+            {{form_row(form.price)}} 
+        </div>
+        <div class="pt-3">
+            {{form_row(form.startDate)}} 
+        </div>
+        <div class="pt-3">
+            {{form_row(form.endDate)}}  
+        </div>
+        <div class="pt-3">  
+            {{form_row(form.image)}}  
+        </div>
+       <hr>
+        <div class="pt-3">  
+            {{form_row(form.artists)}} 
+        </div>
+        <div class="pt-3">
+        <button type="submit" class="btn btn-primary">ajouter</button>
+        </div>
+    {{form_end(form)}}
+</main>
+{% endblock %}
