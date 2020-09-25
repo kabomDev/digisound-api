@@ -13,11 +13,10 @@ use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\String\Slugger\SluggerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-
+use Symfony\Component\Intl\DateFormatter\IntlDateFormatter;
 
 class EventController extends AbstractController
 {
-
 
     /**
      * Accueil
@@ -25,6 +24,7 @@ class EventController extends AbstractController
      */
     public function home(EventRepository $eventRepository, PaginatorInterface $paginator, Request $request)
     {
+
         $list = $eventRepository->findBy([], ["startDate" => "ASC"]);
 
         $events = $paginator->paginate(

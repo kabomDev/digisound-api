@@ -2,25 +2,25 @@
 
 namespace App\Controller;
 
-use App\Entity\User;
-use App\Entity\Ticket;
 use App\Repository\UserRepository;
-use App\Repository\EventRepository;
-use App\Repository\ArtistRepository;
 use App\Repository\TicketRepository;
-use Doctrine\ORM\EntityManagerInterface;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
-use Lexik\Bundle\JWTAuthenticationBundle\Signature\CreatedJWS;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class HomeController extends AbstractController
 {
+
+    public function __construct(PaginatorInterface $paginator)
+    {
+        $this->paginator = $paginator;
+    }
+
     /**
      * @Route("/admin", name="admin")
      */
-    public function index(EventRepository $eventRepository, ArtistRepository $artistRepository, UserRepository $userRepository, TicketRepository $ticketRepository, PaginatorInterface $paginator, Request $request)
+    public function index(UserRepository $userRepository, TicketRepository $ticketRepository, Request $request)
     {
         $admin  = $userRepository->findBy(['email' => 'admin@gmail.com']);
         //$list = $ticketRepository->findBy([], ["id" => "DESC"]);
@@ -30,7 +30,8 @@ class HomeController extends AbstractController
 
         $list = $ticketRepository->findBetweenDate($beginDate, $endDate);
         //dd($tickets);
-        $tickets = $paginator->paginate(
+
+        $tickets = $this->paginator->paginate(
             $list,
             $request->query->getInt('page', 1), //par defaut 1
             10 // le nombre par page

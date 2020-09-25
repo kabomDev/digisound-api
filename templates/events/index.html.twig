@@ -20,8 +20,8 @@
                 {% for event in events %}
                 <th scope="row">{{event.id}}</th>
                 <td>{{event.title}}</td>
-                <td>{{event.startDate | format_datetime('short','none', locale="fr")}}</td>
-                <td>{{event.endDate | format_datetime('short','none', locale="fr")}}</td>
+                <td>{{event.startDate|date('d/m/Y')}}</td>
+                <td>{{event.endDate|date('d/m/Y')}}</td>
                 <td>{{event.price}} €</td>
                 <td class="text-center">
                     <a href="{{path('event_edit',{'id':event.id})}}" class="btn btn-primary"><i class="fa fa-edit"></i></a>
