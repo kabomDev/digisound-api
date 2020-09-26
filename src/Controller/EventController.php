@@ -18,13 +18,13 @@ use Symfony\Component\Intl\DateFormatter\IntlDateFormatter;
 class EventController extends AbstractController
 {
 
+
     /**
      * Accueil
      * @Route("/events", name="events")
      */
     public function home(EventRepository $eventRepository, PaginatorInterface $paginator, Request $request)
     {
-
         $list = $eventRepository->findBy([], ["startDate" => "ASC"]);
 
         $events = $paginator->paginate(

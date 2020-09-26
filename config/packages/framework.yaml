@@ -17,3 +17,11 @@ framework:
     log: true
 
   validation: { enable_annotations: true }
+
+  assets: 
+    packages:
+        images:
+            base_urls: 'https://kabom-yonghoua.alwaysdata.net/digisound/images'
+        
+        css: 
+            base_urls: 'https://kabom-yonghoua.alwaysdata.net/digisound/css'
